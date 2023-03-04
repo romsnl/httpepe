@@ -89,15 +89,16 @@ var codes = []httpcode{
 func main() {
 	app := gin.Default()
 
-	app.StaticFile("/favicon.ico", "./favicon.ico")
+	app.Static("/static", "./static")
 	app.GET("/healthz", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"Status": "Healthy",
 		})
 	})
 
-	app.GET("/codes", getCodes)
 	app.LoadHTMLGlob("templates/*")
+
+	app.GET("/codes", getCodes)
 	app.GET("/:code", index)
 	// listen and serve on 0.0.0.0:8080
 	app.Run()
