@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>{{ .code }} error page</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+
+  <style>
+    body {
+      font-family: Meiryo, sans-serif;
+      background-color: #F5F5F5;
+    }
+
+    .container {
+      max-width: 80%;
+      margin: 0 auto;
+      padding: 50px;
+      background-color: #FFFFFF;
+      border-radius: 10px;
+      box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    h1 {
+      position: relative;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 130px;
+      font-weight: bold;
+      color: #19e69b;
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+      animation: reveal 2s normal;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      margin-top: 50px;
+      filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
+    }
+
+    .vector-animation {
+      position: relative;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      height: 500px;
+      overflow: hidden;
+    }
+
+    .vector-animation svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .footer {
+      font-size: 14px;
+      color: #fff;
+      margin-bottom: 0.5%;
+      width: 100%;
+      height: 6%;
+      text-align: center;
+      left: 0;
+      bottom: 0;
+      position: fixed;
+      background-color: #19e69b;
+    }
+
+    .footer-text {
+      position: relative;
+      z-index: 1;
+      margin-top: 0.80%;
+      margin-bottom: auto;
+      padding: 10px;
+      border-radius: 5px;
+      text-align: center;
+      width: auto;
+      background-color: #C62828;
+      box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+      display: inline-block;
+      animation-name: pulse;
+      animation-duration: 1.5s;
+      animation-iteration-count: infinite;
+      cursor: helper;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(0.98);
+        opacity: 0.7;
+      }
+
+      50% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(0.98);
+        opacity: 0.7;
+      }
+    }
+
+    @keyframes reveal {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Error {{.Code}}</h1>
+    <div class="vector-animation">
+      <!-- Add your vector animation code here -->
+      <script>
+        var animation = bodymovin.loadAnimation({
+          container: document.querySelector('.vector-animation'),
+          renderer: 'svg',
+          loop: true,
+          autoplay: true,
+          path: '{{.Animation}}'
+        });
+      </script>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer-text">
+      Page generated in {{.LoadTime}} seconds.
+    </div>
+  </div>
+</body>
+
+</html>
